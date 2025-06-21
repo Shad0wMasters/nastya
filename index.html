@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сюрприз для тебя ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Начальный экран -->
+        <div id="welcome-screen" class="screen active">
+            <div class="hearts-bg"></div>
+            <div class="content">
+                <h1 class="title">Ты любишь меня? 💕</h1>
+                <div class="buttons">
+                    <button class="btn btn-no" onmouseover="moveButton(this)" onclick="showScrimer()" type="button">Нет 💔</button>
+                    <button class="btn btn-yes" onclick="showQuestion()" type="button">Да ❤️</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Второй вопрос -->
+        <div id="question-screen" class="screen">
+            <div class="hearts-bg"></div>
+            <div class="content">
+                <h1 class="title">Ты за ЛГБТ? 🌈</h1>
+                <div class="buttons">
+                    <button class="btn btn-yes" onclick="showScrimer()" type="button">Да 🌈</button>
+                    <button class="btn btn-no" onclick="showScrimer()" type="button">Нет ❌</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Скример -->
+        <div id="scrimer-screen" class="screen">
+            <div class="scrimer-content">
+                <img src="https://i.gifer.com/RdsN.gif" alt="Скример" class="scrimer-image">
+                <h1 class="scrimer-text">БУ! 👻</h1>
+                <button class="btn btn-restart" onclick="restart()" type="button">Начать заново 🔄</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Отладочная информация -->
+    <div id="debug" style="position: fixed; top: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; padding: 10px; border-radius: 5px; font-size: 12px; z-index: 1000; display: none;">
+        <div>Кнопки работают!</div>
+        <div id="debug-info"></div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Простая проверка работы кнопок
+        document.addEventListener('DOMContentLoaded', function() {
+            const debug = document.getElementById('debug');
+            const debugInfo = document.getElementById('debug-info');
+            
+            // Показываем отладочную информацию на 3 секунды
+            debug.style.display = 'block';
+            debugInfo.textContent = 'Сайт загружен успешно!';
+            
+            setTimeout(() => {
+                debug.style.display = 'none';
+            }, 3000);
+            
+            // Проверяем все кнопки
+            const buttons = document.querySelectorAll('.btn');
+            console.log('Найдено кнопок:', buttons.length);
+            
+            buttons.forEach((btn, index) => {
+                console.log(`Кнопка ${index + 1}:`, btn.textContent, btn.onclick);
+            });
+        });
+    </script>
+</body>
+</html> 
